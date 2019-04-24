@@ -150,6 +150,11 @@ if __name__ == '__main__':
         playlists, tracks = process_csv_4c(args.input_file,
                                            out_file_playlist,
                                            out_file_tracklist)
+    else:
+        logging.error("Dataset '{}' not allowed!".format(args.dataset))
+        logging.info("DATASET ALLOWED:")
+        logging.info("[AOTM, SPOT]")
+        sys.exit()        
 
     logging.info("Number of playlist found: {}".format(playlists))
     logging.info("Number of tracks found: {}".format(tracks))

@@ -102,7 +102,7 @@ def run(infile, min_tracks):
     pp = PreProcessing()
     playlists = pp.filter_playlists(
                     pp.import_playlists(
-                        playlists_file, args.min_tracks))
+                        infile, args.min_tracks))
 
 
     avg_playlist_len = int(np.mean([len(x) for x in playlists]))

@@ -171,7 +171,6 @@ class PlaylistDI(object):
         """
         """
         logging.info("Analyzing Random Playlists...")
-        if 
         playlist_len_mean = int(np.mean([len(x) for x in self.playlists]))
 
         k = 0
