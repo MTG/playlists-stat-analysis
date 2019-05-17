@@ -15,6 +15,8 @@ csv.field_size_limit(sys.maxsize)
 
 def run(dataset, print_ex):
     """
+    Analyze the 10% of playlists with the highest, and
+    the 10% with the lowest diversity index.
     """
     pp = PreProcessing()
     st = Stats()
@@ -121,6 +123,11 @@ def run(dataset, print_ex):
                 ratio_track_art.append(len(playlist)/float(len(artistnames)))
                 tag_common.append(set.intersection(*tags_list))
 
+            common_tags = round(len([x for x in tag_common
+                                     if len(x) > 1])*100/float(playlist_c))
+            single_artists = round(len([x for x in artist_no
+                                        if x == 1])*100/float(playlist_c))
+
             # Print playlist dataset qualitative analysis results
             logging.info("")
             logging.info(
@@ -133,11 +140,7 @@ def run(dataset, print_ex):
                 "Average tag count: {}".format(
                     round(np.mean(tag_no))))
             logging.info(
-                "Common tags(%): {}".format(
-                    round(
-                        len(
-                            [x for x in tag_common if len(x) > 1]
-                            )*100/float(playlist_c))))
+                "Common tags(%): {}".format(common_tags))
             logging.info(
                 "Average tag over tracks: {}".format(
                     round(np.mean(ratio_tag_track))))
@@ -145,11 +148,7 @@ def run(dataset, print_ex):
                 "Average artist count: {}".format(
                     round(np.mean(artist_no))))
             logging.info(
-                "Single-artist(%): {}".format(
-                    round(
-                        len(
-                            [x for x in artist_no if x == 1]
-                            )*100/float(playlist_c))))
+                "Single-artist(%): {}".format(single_artists))
             logging.info(
                 "Average tracks count: {}".format(
                     round(np.mean(tracks_no))))
@@ -160,14 +159,10 @@ def run(dataset, print_ex):
             # Store results for computing Percentual Difference
             results = [np.mean(distances),
                        round(np.mean(tag_no)),
-                       round(len(
-                        [x for x in tag_common if len(x) > 1]
-                        )*100/float(playlist_c)),
+                       common_tags,
                        round(np.mean(ratio_tag_track)),
                        round(np.mean(artist_no)),
-                       round(len(
-                        [x for x in artist_no if x == 1]
-                        )*100/float(playlist_c)),
+                       single_artists,
                        round(np.mean(tracks_no)),
                        round(np.mean(ratio_track_art))]
 
