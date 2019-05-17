@@ -25,14 +25,14 @@ def set_log_config(logfile, level):
 
 
 class Stats(object):
-
-    def __init__(self):
-        """
-        """
-        pass
+    """
+    Class containg methods for computing diversity indexes, quartile
+    coefficient of dispersion, and percentage difference.
+    """
 
     def shannon_di(self, data):
         """
+        Compute the Shannon's Diversity Index.
         """
         from math import log as ln
 
@@ -47,6 +47,7 @@ class Stats(object):
 
     def simpson_di(self, data):
         """
+        Compute the Simpson's Diversity Index.
         """
         N = sum([x for x in data.values()])
         n = sum([x*(x-1) for x in data.values()])
@@ -55,7 +56,7 @@ class Stats(object):
 
     def qcd(self, array):
         """
-        Quartile coefficient of dispersion
+        Compute the quartile coefficient of dispersion
         """
         array = np.array(array)
         q3, q1 = np.percentile(array, [75, 25])
@@ -64,6 +65,7 @@ class Stats(object):
 
     def pdiff(self, a, b):
         """
+        Compute the percentage difference
         """
         c = abs(a-b)
         d = (a+b)/float(2)
@@ -71,13 +73,15 @@ class Stats(object):
 
 
 class PreProcessing(object):
-
-    def __init__(self):
-        """
-        """
-        pass
+    """
+    Class containing methods for importing and filtering playlists,
+    tracks, embeddings and tags, and for creating the Annoy Index.
+    """
 
     def norm_str(self, input):
+        """
+        Normalize string
+        """
         return input.replace(
             '#', '+').replace(
             '&', ' ').replace(
@@ -86,6 +90,7 @@ class PreProcessing(object):
 
     def import_playlists(self, infile, min_tracks):
         """
+        Import playlist dataset as list of playlists
         """
         logging.info("Importing playlists...")
         playlists = []
@@ -104,8 +109,9 @@ class PreProcessing(object):
 
     def filter_playlists(self, playlists):
         """
+        Filter outliers from playlists dataset.
         """
-        # Interquantile range
+        # Compute Interquantile range
         playlist_lens = [len(x) for x in playlists]
         q75, q25 = np.percentile(playlist_lens, [75, 25])
         iqr = q75 - q25
@@ -137,6 +143,7 @@ class PreProcessing(object):
 
     def import_embeddings(self, glove_embs):
         """
+        Import GloVe embeddings as Dict.
         """
         logging.info('Importing GloVe tag-embeddings...')
         DictEmbeds = {}
@@ -157,6 +164,7 @@ class PreProcessing(object):
 
     def import_track_tags(self, tag_file):
         """
+        Import tags associated to each track as Dict.
         """
         logging.info("Importing Last.fm tags...")
         DictTrackTag = {}
@@ -176,6 +184,7 @@ class PreProcessing(object):
 
     def import_tracklist(self, tracklist):
         """
+        Import tracklist associated to the dataset as Dict
         """
         DictTrack = {}
         with open(tracklist, 'r+') as inf:
@@ -197,6 +206,7 @@ class PreProcessing(object):
 
     def create_annoy_idx(self, DictEmbeddings):
         """
+        Create Annoy index using GloVe embeddings.
         """
         logging.info("Creating Annoy Index...")
         t = AnnoyIndex(100, metric="angular")

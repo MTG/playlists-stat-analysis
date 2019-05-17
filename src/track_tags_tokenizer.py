@@ -14,6 +14,8 @@ csv.field_size_limit(sys.maxsize)
 
 def run(dataset):
     """
+    Convert file with list of tags to a single line file with tags 
+    concatenede, used for computing the GloVe embeddings.
     """
     pp = PreProcessing()
 

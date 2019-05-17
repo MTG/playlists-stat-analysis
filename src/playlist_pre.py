@@ -154,7 +154,7 @@ if __name__ == '__main__':
         logging.error("Dataset '{}' not allowed!".format(args.dataset))
         logging.info("DATASET ALLOWED:")
         logging.info("[AOTM, SPOT]")
-        sys.exit()        
+        sys.exit()
 
     logging.info("Number of playlist found: {}".format(playlists))
     logging.info("Number of tracks found: {}".format(tracks))

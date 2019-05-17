@@ -17,6 +17,7 @@ from utils import set_log_config, PreProcessing, ALLOWED_DATASETS
 def tsne_plot_similar_words(title, labels, embedding_clusters, word_clusters,
                             a, filename):
     """
+    Plot clusters of similar words, computed with t-sne algorithm
     """
     plt.figure(figsize=(16, 9))
     colors = cm.rainbow(np.linspace(0, 1, len(labels)))
@@ -41,6 +42,7 @@ def tsne_plot_similar_words(title, labels, embedding_clusters, word_clusters,
 
 def create_clusters(DictEmbeds, DictKeyEmbeds, keys, a_idx, item_sim):
     """
+    Create clusters of similar words, looking at the Annoy idex.
     """
     embedding_clusters = []
     word_clusters = []
@@ -66,6 +68,8 @@ def create_clusters(DictEmbeds, DictKeyEmbeds, keys, a_idx, item_sim):
 
 def run(dataset, item_sim, keys):
     """
+    Main function. Take as input the GloVe embeddings, create clusters
+    with similar words, and then plot using the t-sne algorithm.
     """
     glove_embs = os.path.join("../data", "tag_embeds", dataset+'.txt')
     pp = PreProcessing()
