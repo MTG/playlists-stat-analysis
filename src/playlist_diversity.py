@@ -19,6 +19,7 @@ csv.field_size_limit(sys.maxsize)
 
 class PlaylistDI(object):
     """
+    Perform playlist diversity analysis. 
     """
     def __init__(self, dataset, min_tracks):
         """
@@ -56,6 +57,8 @@ class PlaylistDI(object):
 
     def tag_distance(self, word1, word2):
         """
+        Compute pairwise cosine distance between two tags, from the Annoy index.
+        If tags are not in the index, return -1
         """
         word1 = self.pp.norm_str(word1)
         word2 = self.pp.norm_str(word2)
@@ -69,6 +72,8 @@ class PlaylistDI(object):
 
     def TT_distance(self, v1, v2):
         """
+        Compute Track-Tag distance between two tracks. If tracks have not the 
+        same number of tags, return -1. 
         """
         if not v1 or not v2:
             return -1
@@ -103,6 +108,7 @@ class PlaylistDI(object):
 
     def log_results(self, results):
         """
+        Print results of the diversity analysis.
         """
         logging.info("Mean pDI: {}".format(np.mean(results)))
         logging.info("Std pDI: {}".format(np.std(results)))
@@ -113,6 +119,7 @@ class PlaylistDI(object):
 
     def analyze_playlist(self):
         """
+        Analyze diversity of playlists from the dataset.
         """
         logging.info("Analyzing Playlists...")
         pDI = []
@@ -169,6 +176,8 @@ class PlaylistDI(object):
 
     def analyze_random_playlist(self):
         """
+        Analyze diversity of random playlists created
+        with tracks from the dataset.
         """
         logging.info("Analyzing Random Playlists...")
         playlist_len_mean = int(np.mean([len(x) for x in self.playlists]))
@@ -207,6 +216,8 @@ class PlaylistDI(object):
 
     def write_playlist_qualia(self, pDI, pDI_idx):
         """
+        Write out the files with the playlists for performing 
+        the qualitative analysis
         """
         dist_10pct = int(0.1*len(pDI))
         # Write most similar playlists
@@ -227,6 +238,9 @@ class PlaylistDI(object):
 
     def run(self):
         """
+        Main function. It performs the diversity on the playlists from the 
+        dataset, then on random playlists. Finally, it writes the files with
+        the playlists for performing a qualitative analysis
         """
         pDI, pDI_idx = self.analyze_playlist()
         self.analyze_random_playlist()
