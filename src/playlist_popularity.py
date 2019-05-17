@@ -4,7 +4,6 @@
 import os
 import sys
 import numpy as np
-import csv
 import operator
 import argparse
 import logging
@@ -15,7 +14,10 @@ from utils import set_log_config, Stats, PreProcessing, ALLOWED_DATASETS
 
 def get_track_popularity(playlists):
     """
-    Calculating Tracks popularity
+    Calculate Tracks popularity, intendend as frequency of a track
+    within the dataset. It takes as input a list of playlists and
+    return a Dict, with as keys the track IDs and as values the tracks
+    popularity
     """
     DictTrackPop = {}
     for playlist in playlists:
@@ -29,6 +31,11 @@ def get_track_popularity(playlists):
 
 def track_popularity_analysis(playlists):
     """
+    Analyze how popularity is distributed within the tracks in the dataset.
+    It takes as input a list of playlists and return:
+    - Dict with as keys the track IDs and as values the tracks popularity
+    - Int representing the minimum track popularity
+    - Int representing the maximum track popularity
     """
     DictTrackPop = get_track_popularity(playlists)
     logging.info("Total number of tracks: {}".format(len(DictTrackPop)))
@@ -74,6 +81,13 @@ def track_popularity_analysis(playlists):
 def playlist_popularity_analysis(playlists, DictTrackPop, min_pop,
                                  max_pop, avg_playlist_len):
     """
+    Analyze how popularity is distributed within the playlist in the dataset.
+    It takes as input:
+    - List of playlists:
+    - Dict with Tracks popularity
+    - Int minimum track popularity
+    - Int maximum track popularity
+    - Int average playlist lenght
     """
     playlists_pop = []
 
@@ -98,12 +112,14 @@ def playlist_popularity_analysis(playlists, DictTrackPop, min_pop,
 
 def run(infile, min_tracks):
     """
+    Main function. It imports the playlists from the dataset, filtering out
+    the outliers. Then, it perform the track popularity analysis and the
+    playlist popularity analysis
     """
     pp = PreProcessing()
     playlists = pp.filter_playlists(
                     pp.import_playlists(
                         infile, args.min_tracks))
-
 
     avg_playlist_len = int(np.mean([len(x) for x in playlists]))
     logging.info(
