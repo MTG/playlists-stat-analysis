@@ -11,13 +11,13 @@ git clone https://github.com/oliviaguest/gini
 ```
 
 #### Installation:
-Create a virtual environment (tested on Python 3.5), then launch the following command for installing the dependecies (be sure to be in the `src` folder):
+Create a virtual environment (tested on Python 3.5), then launch the following command for installing the dependencies (be sure to be in the `src` folder):
  ```
 pip install -r requirements.txt
  ```
  
  #### Download dataset (optional):
- It lasts between 5 and 10 minuts, and it is needed around 2GB of free disk
+ It lasts between 5 and 10 minutes, and it is needed around 2GB of free disk
  ```
  mkdir ../data
   ./download_datasets.sh
