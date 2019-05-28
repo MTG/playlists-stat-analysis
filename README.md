@@ -11,7 +11,7 @@ git clone https://github.com/oliviaguest/gini
 ```
 
 #### Installation:
-Create a virtual environment (tested on Python 3.5)
+Create a virtual environment (tested on Python 3.5), then launch the following command
  ```
 pip install -r requirements.txt
  ```
