@@ -30,22 +30,22 @@ pip install -r requirements.txt
 For Last.fm tags and tags embeddings write to 
 > lorenzo.porcaro at gmail.com
 
- #### Perform analysis:
+ #### Analyze Dataset:
  For instance, to analyze AOTM dataset launch the following commands: 
  
- Playlist Popularity Analysis
+##### Playlist Popularity Analysis:
 ```
 python playlist_popularity.py -d AOTM
 ```
-Playlist Diversity Analysis
+##### Playlist Diversity Analysis:
 ```
 python playlist_diversity.py -d AOTM
 ```
-Playlist Qualitative Analysis
+##### Playlist Qualitative Analysis:
 ```
 python playlist_qualia.py -d AOTM 
 ```
-Plot tag-embeddings using [t-SNE](https://lvdmaaten.github.io/tsne/) algorithm 
+##### Plot tag-embeddings using [t-SNE](https://lvdmaaten.github.io/tsne/) algorithm:
 ```
 python plot_embeddings_tsne.py -d AOTM
 ```
