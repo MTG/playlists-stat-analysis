@@ -1,4 +1,4 @@
-# playlist
+# 20 Years of Playlists: a Statistical Analysis on Popularity and Diversity
 
 #### Contact:
 >lorenzo.porcaro at gmail.com
