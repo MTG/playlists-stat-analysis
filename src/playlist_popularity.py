@@ -47,8 +47,8 @@ def track_popularity_analysis(playlists):
         "Most popular track <{}>, with tPI: {} ".format(
             top_tPI, DictTrackPop[top_tPI]))
 
-    logging.info("Top tPI divided by number of tracks: {} ".format(
-            DictTrackPop[top_tPI]/len(DictTrackPop)))
+    logging.info("Top tPI divided by number of playlists: {} ".format(
+            DictTrackPop[top_tPI]/len(playlists)))
 
     # Min-Max normalization
     min_pop, max_pop = [min(DictTrackPop.values()), max(DictTrackPop.values())]
