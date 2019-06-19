@@ -38,7 +38,6 @@ def track_popularity_analysis(playlists):
     - Int representing the maximum track popularity
     """
     DictTrackPop = get_track_popularity(playlists)
-    logging.info("Total number of tracks: {}".format(len(DictTrackPop)))
 
     # Get most popular track
     top_tPI = max(DictTrackPop.items(), key=operator.itemgetter(1))[0]
