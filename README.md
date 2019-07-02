@@ -31,7 +31,7 @@ pip install -r requirements.txt
 ```
 
  #### Add new dataset (optional):
- To be updated
+ Check [data/README.md](https://github.com/LPorcaro/playlist/blob/master/data/README.md)
 
  #### Tags data:
 For Last.fm tags and tags embeddings write to 
