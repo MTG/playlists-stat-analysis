@@ -10,7 +10,7 @@ mkdir THE_NAME_OF_YOUR_DATASET
 
 ### Add Your Dataset Within the Allowed Ones
 Open the file `playlist/src/utils.py` and modify the line 9, adding the name of your dataset in the list `ALLOWED_DATASETS`
-```
+```python
 import logging
 import csv
 import numpy as np
@@ -37,7 +37,7 @@ Then, add in the folder the file with the embeddings previously computed. No nee
 tag_name value1 value2 .... valueN
 ```
 Notice that is not tab-separated, just white-space separated. The dimension of the embeddings by default is 100. If you want to use embeddings with different dimensions, open the file  `playlist/src/utils.py` and modify the line 156, changing the value of the sanity check, by default set at 100:
-```
+```python
 if len(embs) != THE_DIMENSION_OF_YOUR_EMBEDDINGS:
   logging.error('Problem importing the embeddings')
   break
