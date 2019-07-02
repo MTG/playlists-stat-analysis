@@ -12,8 +12,8 @@ This repository contains code to reproduce the results of our [paper](http://mtg
 
 #### Clone repos:
 ```
-git clone https://github.com/LPorcaro/playlist.git
-cd playlist/src/
+git clone https://github.com/MTG/playlists-stat-analysis.git
+cd playlists-stat-analysis/src/
 git clone https://github.com/oliviaguest/gini
 ```
 
@@ -23,7 +23,7 @@ Create a virtual environment (tested on Python 3.5), then launch the following c
 pip install -r requirements.txt
  ```
  
- #### Download dataset (optional):
+ #### Download dataset:
  It lasts between 5 and 10 minutes, and it is needed around 2GB of free disk
  ```
  mkdir ../data
