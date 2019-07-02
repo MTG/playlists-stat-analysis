@@ -36,15 +36,34 @@ First, create a folder for the embeddings
 cd playlist/data
 mkdir tag_embeds
 ```
-Then add in the folder the files with the embeddings previously computed. No needs for using GloVe instead of other embeddings. You can try other architectures (and let us know how it works!). The files with the embedding should be `.txt` file in the following format: 
+Then, add in the folder the file with the embeddings previously computed. No needs for using GloVe instead of other embeddings. You can try other architectures (and let us know how it works!). The files with the embedding should be a `.txt` file in the following format: 
 ```
 tag_name value1 value2 .... valueN
 ```
-Notice that is not tab-separated, just white-space separated. The dimension of the embeddings by default is 100. If you want to use embeddings with different dimensions, open the file 
-`playlist/src/utils.py`
-And modify the line 156, changing the value of the sanity check, by default set at 100:
+Notice that is not tab-separated, just white-space separated. The dimension of the embeddings by default is 100. If you want to use embeddings with different dimensions, open the file  `playlist/src/utils.py` and modify the line 156, changing the value of the sanity check, by default set at 100:
 ```
 if len(embs) != THE_DIMENSION_OF_YOUR_EMBEDDINGS:
   logging.error('Problem importing the embeddings')
   break
+```
+The file with the embedding should be located in the folder previously created, and named as the dataset:
+```
+playlist/data/tag_embeds/THE_NAME_OF_YOUR_DATSET.txt
+```
+
+#### Add Tag-Tracks
+First, create a folder for the embeddings
+```
+cd playlist/data
+mkdir lastfm_tags
+```
+Then, add in the folder the file with the tag previously retrieved. No needs for using LastFm instead of other tags. You can try other tags (and let us know how it works!). The files with the tags should be a TSV file in the following format:
+```
+ArtistName|TrackName\t[('tag1', w1), ('tag2',w2), ('tag3',w3),('tag4',w5), ('tag5', w5)]
+```
+where the `w` are the weights associated to each tag. If you don't have it or don't want to take into account the weights, just set 100 to every `w` (if you are asking why, just read the paper ;) ). `ArtistName` and `Trackname` should be formatted using the [norm_str](https://github.com/LPorcaro/playlist/blob/master/src/utils.py#L81) function defined in `playlist/src/utils.py` (line 81). There is room for improving the normalization function, but for now is the only way to be able to map strings used in different places.
+
+The file with the tags should be located in the folder previously created, and named as following:
+```
+playlist/data/lastfm_tags/lastfm_tags.tsv
 ```
