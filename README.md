@@ -1,5 +1,12 @@
 # 20 Years of Playlists: a Statistical Analysis on Popularity and Diversity
 
+The proposed methodology can be applied to characterize playlists in terms of popularity and semantic diversity, allowing the comparative analysis of human-generated and algorithm-generated playlists in different contexts such as historical periods, platforms and musical genres. We find extremely valuable to compare different playlist datasets, as it allows to understand how changes in the listening experience are affecting playlist creation strategies.
+
+This repository contains code to reproduce the results of our [paper](http://mtg.upf.edu/node/3959).
+
+#### Reference:
+> Lorenzo Porcaro, Emilia Gómez (2019). 20 Years of Playlists: A Statistical Analysis on Popularity and Diversity. Paper to be presented at the 20th Conference of the International Society for Music Information Retrieval (ISMIR 2019), Delft, The Netherlands, 4-8 November.
+
 #### Contact:
 >lorenzo.porcaro at gmail.com
 
