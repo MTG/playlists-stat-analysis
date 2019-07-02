@@ -58,7 +58,9 @@ Then, add in the folder the file with the tags previously retrieved. No needs fo
 ArtistName|TrackName\t[('tag1', w1), ('tag2',w2), ('tag3',w3),('tag4', w5), ('tag5', w5)]
 ```
 Example
-```randy+roos|ray's+passage	[('guitar virtuoso', 100), ('Mindracers', 100), ('Still Behind the Wheel', 100), ('guitar bud', 100), ('mindracer', 50)]```
+```
+randy+roos|ray's+passage\t[('guitar virtuoso', 100), ('Mindracers', 100), ('Still Behind the Wheel', 100), ('guitar bud', 100), ('mindracer', 50)]
+```
 
 where the `w` are the weights associated to each tag. If you don't have it or don't want to take into account the weights, just set 100 to every `w` (if you are asking why, just read the paper ;) ). `ArtistName` and `Trackname` should be formatted using the [norm_str](https://github.com/LPorcaro/playlist/blob/master/src/utils.py#L81) function defined in `playlist/src/utils.py` (line 81). There is room for improving the normalization function, but for now is the only way to be able to map strings used in different places.
 
