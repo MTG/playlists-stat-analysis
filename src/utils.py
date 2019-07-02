@@ -153,7 +153,7 @@ class PreProcessing(object):
             for c, row in enumerate(_reader):
                 key = row[0]
                 embs = [float(x) for x in row[1:]]
-                if len(embs) < 100:
+                if len(embs) != 100:
                     logging.error('Problem importing the embeddings')
                     break
                 DictEmbeds[c] = embs

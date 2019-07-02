@@ -131,7 +131,7 @@ def run(dataset, print_ex):
             # Print playlist dataset qualitative analysis results
             logging.info("")
             logging.info(
-                "## Qualitative analysis of playlist from {} file ## ".format(
+                "## Qualitative analysis of playlists from {} file ## ".format(
                     input_file))
             logging.info(
                 "Average pDI: {}".format(
@@ -169,7 +169,7 @@ def run(dataset, print_ex):
             results_pd.append(results)
 
     logging.info("")
-    logging.info("## Percentage Diffence (PD) ## ".format(input_file))
+    logging.info("## Percentage Difference (PD) ## ".format(input_file))
     for c in range(0, 8):
         if c not in [2, 5]:
             logging.info(st.pdiff(results_pd[0][c], results_pd[1][c]))
