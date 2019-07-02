@@ -62,7 +62,7 @@ Example
 randy+roos|ray's+passage\t[('guitar virtuoso', 100), ('Mindracers', 100), ('Still Behind the Wheel', 100), ('guitar bud', 100), ('mindracer', 50)]
 ```
 
-where the `w` are the weights associated to each tag. If you don't have it or don't want to take into account the weights, just set 100 to every `w` (if you are asking why, just read the paper ;) ). `ArtistName` and `Trackname` should be formatted using the [norm_str](https://github.com/LPorcaro/playlist/blob/master/src/utils.py#L81) function defined in `playlist/src/utils.py` (line 81). There is room for improving the normalization function, but for now is the only way to be able to map strings used in different places.
+where the `w` are the weights associated to each tag. If you don't have it or don't want to take into account the weights, just set 100 to every `w` (if you are asking why, just read the [paper](http://mtg.upf.edu/node/3959) section 3.3.2 ;) ). `ArtistName` and `Trackname` should be formatted using the [norm_str](https://github.com/LPorcaro/playlist/blob/master/src/utils.py#L81) function defined in `playlist/src/utils.py` (line 81). There is room for improving the normalization function, but for now is the only way to be able to map strings used in different places.
 
 The file with the tags should be located in the folder previously created, and named as following:
 ```
