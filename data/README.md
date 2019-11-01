@@ -48,7 +48,7 @@ playlists-stat-analysis/data/tag_embeds/THE_NAME_OF_YOUR_DATSET.txt
 ```
 
 #### Add Tag-Tracks
-First, create a folder for the embeddings
+First, create a folder for the tags
 ```
 cd playlists-stat-analysis/data
 mkdir lastfm_tags
